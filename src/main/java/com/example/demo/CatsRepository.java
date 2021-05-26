@@ -10,13 +10,14 @@ package com.example.demo;
 
 import java.util.Optional;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
 
 /**
  * @author Madhura Bhave
  */
-interface CatsRepository extends CrudRepository<Cat, Integer> {
+interface CatsRepository extends JpaRepository<Cat, Integer> {
 
-	Cat findByName(String toby);
+	Cat findByName(String name);
 
 }

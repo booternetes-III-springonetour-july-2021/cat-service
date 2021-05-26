@@ -8,9 +8,7 @@
 
 package com.example.demo;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 import org.springframework.util.Assert;
 
@@ -18,6 +16,7 @@ import org.springframework.util.Assert;
  * @author Madhura Bhave
  */
 @Entity
+@Table (name = "cat")
 public class Cat {
 
 	@Id

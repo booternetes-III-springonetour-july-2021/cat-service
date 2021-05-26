@@ -1,3 +1,5 @@
-
-
-create table cat(idasd serial primary key, name varchar(255) not null ) ;
+create table cat if n
+(
+    id     serial primary key,
+    name varchar(255) not null
+);

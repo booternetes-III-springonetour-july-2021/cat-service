@@ -1,1 +1,2 @@
-insert into cat (name) values( 'Toby');
+insert into cat( name )
+values ('Toby');

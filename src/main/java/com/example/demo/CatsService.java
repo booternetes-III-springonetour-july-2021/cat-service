@@ -10,16 +10,21 @@ package com.example.demo;
 
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+
 /**
  * @author Madhura Bhave
  */
 @Service
-public class CatsService {
+@Transactional
+class CatsService {
 
 	private final CatsRepository repository;
 
-	public CatsService(CatsRepository repository) {
+	CatsService(CatsRepository repository) {
+
 		this.repository = repository;
+//		this.repository.save ( new Cat ("Toby"));
 	}
 
 	public Cat getCat(String name) {
