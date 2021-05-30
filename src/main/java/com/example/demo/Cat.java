@@ -31,7 +31,8 @@ public class Cat {
     private Cat() {
     }
 
-     /* for testing */ Cat(Integer id, String name) {
+     /* for testing */
+     Cat(Integer id, String name) {
         Assert.state(id != null && id > 0, () -> "the id should not be null");
         this.id = id;
         init(name);
