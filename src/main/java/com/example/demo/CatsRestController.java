@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * @author Madhura Bhave
  */
+
 @RestController
 @RequestMapping("/cats")
 class CatsRestController {

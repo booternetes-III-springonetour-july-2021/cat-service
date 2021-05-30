@@ -8,35 +8,46 @@
 
 package com.example.demo;
 
-import javax.persistence.*;
-
 import org.springframework.util.Assert;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  * @author Madhura Bhave
  */
 @Entity
-@Table (name = "cat")
+@Table(name = "cat")
 public class Cat {
 
-	@Id
-	@GeneratedValue
-	private Integer id;
+    @Id
+    @GeneratedValue
+    private Integer id;
 
-	private String name;
+    private String name;
 
-	private Cat() {
-	}
+    private Cat() {
+    }
 
-	public Cat(String name) {
-		Assert.isTrue(name.length() > 1,
-				() -> "the name should have more than one character ");
-		Assert.state(Character.isUpperCase(name.charAt(0)),
-				() -> "the name should start with an uppercase!");
-		this.name = name;
-	}
+     /* for testing */ Cat(Integer id, String name) {
+        Assert.state(id != null && id > 0, () -> "the id should not be null");
+        this.id = id;
+        init(name);
+    }
 
-	public String getName() {
-		return name;
-	}
+    public Cat(String name) {
+        init(name);
+    }
+
+    private void init(String name) {
+        Assert.isTrue(name.length() > 1, () -> "the name should have more than one character ");
+        Assert.state(Character.isUpperCase(name.charAt(0)), () -> "the name should start with an uppercase!");
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
 }
