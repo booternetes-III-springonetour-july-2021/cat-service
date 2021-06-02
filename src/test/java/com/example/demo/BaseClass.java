@@ -19,7 +19,6 @@ class BaseClass {
 
     @BeforeEach
     public void before() {
-        System.out.println("before...");
         var cat = new Cat(1, "Toby");
         Mockito.when(this.catsRepository.findByName("Toby")).thenReturn(cat);
         RestAssuredMockMvc.standaloneSetup(new CatsRestController(this.service));

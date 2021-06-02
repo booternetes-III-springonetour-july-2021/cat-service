@@ -22,8 +22,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 	* @author Josh Long
 	*/
 @Testcontainers
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,
-	properties = "spring.jpa.hibernate.ddl-auto=none")
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT )
 public class CatsIntegrationTests {
 
 	@Autowired

@@ -1,5 +1,9 @@
-create table if not exists cat
+drop table if exists cat cascade;
+drop sequence if exists hibernate_sequence;
+create sequence hibernate_sequence start 1 increment 1;
+create table cat
 (
-    id     serial primary key,
-    name varchar(255) not null
+    id   int4 not null,
+    name varchar(255),
+    primary key (id)
 );

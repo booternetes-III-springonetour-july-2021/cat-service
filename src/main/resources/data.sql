@@ -1,2 +1,2 @@
-insert into cat( name )
-values ('Toby');
+insert into cat(id, name)
+values (nextval('hibernate_sequence'), 'Toby');
