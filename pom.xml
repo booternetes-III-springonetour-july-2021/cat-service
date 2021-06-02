@@ -145,39 +145,46 @@
             </plugin>
         </plugins>
     </build>
+
     <repositories>
         <repository>
-            <id>spring-snapshots</id>
-            <name>Spring Snapshots</name>
-            <url>https://repo.spring.io/snapshot</url>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-        </repository>
-        <repository>
-            <id>spring-milestones</id>
-            <name>Spring Milestones</name>
-            <url>https://repo.spring.io/milestone</url>
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
+            <id>central</id>
+            <name>libs-release</name>
+            <url>
+                https://cloudnativejava.jfrog.io/cloudnativejava/libs-release
+            </url>
+        </repository>
+        <repository>
+            <snapshots/>
+            <id>snapshots</id>
+            <name>libs-snapshot</name>
+            <url>
+                https://cloudnativejava.jfrog.io/cloudnativejava/libs-snapshot
+            </url>
         </repository>
     </repositories>
     <pluginRepositories>
         <pluginRepository>
-            <id>spring-milestones</id>
-            <name>Spring Milestones</name>
-            <url>https://repo.spring.io/milestone</url>
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
+            <id>central</id>
+            <name>plugins-release</name>
+            <url>
+                https://cloudnativejava.jfrog.io/cloudnativejava/plugins-release
+            </url>
         </pluginRepository>
         <pluginRepository>
-            <id>spring-snapshots</id>
-            <name>Spring Snapshots</name>
-            <url>https://repo.spring.io/snapshot</url>
+            <snapshots/>
+            <id>snapshots</id>
+            <name>plugins-snapshot</name>
+            <url>
+                https://cloudnativejava.jfrog.io/cloudnativejava/plugins-snapshot
+            </url>
         </pluginRepository>
     </pluginRepositories>
-
 
 </project>
