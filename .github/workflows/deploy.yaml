@@ -3,11 +3,11 @@ name: Deploy
 
 env:
   ACTIONS_ALLOW_UNSECURE_COMMANDS: true
-  GCLOUD_ZONE: ${{ secrets.GCLOUD_ZONE }}
-  GCLOUD_PROJECT: ${{ secrets.GCLOUD_PROJECT  }}
-  GKE_CLUSTER_NAME: ${{ secrets.GKE_CLUSTER_NAME  }}
-  ARTIFACTORY_USERNAME: ${{ secrets.ARTIFACTORY_USERNAME  }}
-  ARTIFACTORY_PASSWORD: ${{ secrets.ARTIFACTORY_PASSWORD  }}
+#  GCLOUD_ZONE: ${{ secrets.GCLOUD_ZONE }}
+#  GCLOUD_PROJECT: ${{ secrets.GCLOUD_PROJECT  }}
+#  GKE_CLUSTER_NAME: ${{ secrets.GKE_CLUSTER_NAME  }}
+#  ARTIFACTORY_USERNAME: ${{ secrets.ARTIFACTORY_USERNAME  }}
+#  ARTIFACTORY_PASSWORD: ${{ secrets.ARTIFACTORY_PASSWORD  }}
 
 on:
 
@@ -35,17 +35,17 @@ jobs:
         with:
           java-version: 11
 
-      - uses: google-github-actions/setup-gcloud@master
-        with:
-          version: '290.0.1'
-          service_account_key: ${{ secrets.GCLOUD_SA_KEY }}
-          project_id: ${{ env.GCLOUD_PROJECT }}
-          export_default_credentials: true
-
-      - run: |-
-          gcloud config set project $GCLOUD_PROJECT
-          gcloud --quiet auth configure-docker
-          gcloud container clusters get-credentials $GKE_CLUSTER_NAME --zone "$GCLOUD_ZONE" --project $GCLOUD_PROJECT
+#      - uses: google-github-actions/setup-gcloud@master
+#        with:
+#          version: '290.0.1'
+#          service_account_key: ${{ secrets.GCLOUD_SA_KEY }}
+#          project_id: ${{ env.GCLOUD_PROJECT }}
+#          export_default_credentials: true
+#
+#      - run: |-
+#          gcloud config set project $GCLOUD_PROJECT
+#          gcloud --quiet auth configure-docker
+#          gcloud container clusters get-credentials $GKE_CLUSTER_NAME --zone "$GCLOUD_ZONE" --project $GCLOUD_PROJECT
 
       - name: Deploy
         run: |
