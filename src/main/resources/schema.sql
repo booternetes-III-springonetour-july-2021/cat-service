@@ -1,10 +1,8 @@
-drop table if exists cat cascade;
-drop sequence if exists hibernate_sequence;
-create sequence hibernate_sequence start 1 increment 1;
-create table cat
+create sequence if not exists hibernate_sequence start 1 increment 1 ;
+create table if not exists cat
 (
     id   int4 not null,
     name varchar(255),
-    age_in_months int,
+    date_of_birth date,
     primary key (id)
 );

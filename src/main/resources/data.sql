@@ -1,2 +1,2 @@
-insert into cat(id, name, age_in_months)
-values (nextval('hibernate_sequence'), 'Toby', 4);
+insert into cat(id, name, date_of_birth)
+values (nextval('hibernate_sequence'), 'Toby', current_date);
