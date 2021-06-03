@@ -40,4 +40,16 @@ class CatTests {
 		Cat cat = new Cat("Toby");
 		assertThat(cat.getName()).isEqualTo("Toby");
 	}
+
+	@Test
+	void getAgeShouldReturnAge() {
+		Cat cat = new Cat("Toby", 3);
+		assertThat(cat.getAgeInMonths()).isEqualTo(3);
+	}
+
+	@Test
+	void defaultAgeIsFourMonth() {
+		Cat cat = new Cat("Paprika");
+		assertThat(cat.getAgeInMonths()).isEqualTo(4);
+	}
 }

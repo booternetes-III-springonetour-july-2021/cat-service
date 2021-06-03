@@ -5,5 +5,6 @@ create table cat
 (
     id   int4 not null,
     name varchar(255),
+    age_in_months int,
     primary key (id)
 );

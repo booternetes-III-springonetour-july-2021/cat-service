@@ -28,6 +28,8 @@ public class Cat {
 
     private String name;
 
+    private int ageInMonths;
+
     private Cat() {
     }
 
@@ -35,20 +37,29 @@ public class Cat {
      Cat(Integer id, String name) {
         Assert.state(id != null && id > 0, () -> "the id should not be null");
         this.id = id;
-        init(name);
+        init(name, 4);
     }
 
     public Cat(String name) {
-        init(name);
+        init(name, 4);
     }
 
-    private void init(String name) {
+    public Cat(String name, int ageInMonths) {
+        init(name, ageInMonths);
+    }
+
+    private void init(String name, int ageInMonths) {
         Assert.isTrue(name.length() > 1, () -> "the name should have more than one character ");
         Assert.state(Character.isUpperCase(name.charAt(0)), () -> "the name should start with an uppercase!");
         this.name = name;
+        this.ageInMonths = ageInMonths;
     }
 
     public String getName() {
         return name;
+    }
+
+    public int getAgeInMonths() {
+        return ageInMonths;
     }
 }
