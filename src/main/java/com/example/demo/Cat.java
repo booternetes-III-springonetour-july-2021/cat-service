@@ -8,14 +8,12 @@
 
 package com.example.demo;
 
-import org.springframework.util.Assert;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.time.LocalDate;
-import java.time.Period;
+
+import org.springframework.util.Assert;
 
 /**
  * @author Madhura Bhave
@@ -30,7 +28,7 @@ public class Cat {
 
     private String name;
 
-    private LocalDate dateOfBirth;
+    private Integer ageInMonths;
 
     private Cat() {
     }
@@ -39,22 +37,22 @@ public class Cat {
      Cat(Integer id, String name) {
         Assert.state(id != null && id > 0, () -> "the id should not be null");
         this.id = id;
-        init(name, LocalDate.now());
+         init(name, 4);
     }
 
     public Cat(String name) {
-        init(name, LocalDate.now());
+        init(name, 4);
     }
 
-    public Cat(String name, LocalDate dateOfBirth) {
-        init(name, dateOfBirth);
+    public Cat(String name, int ageInMonths) {
+        init(name, ageInMonths);
     }
 
-    private void init(String name, LocalDate dateOfBirth) {
+    private void init(String name, int ageInMonths) {
         Assert.isTrue(name.length() > 1, () -> "the name should have more than one character ");
         Assert.state(Character.isUpperCase(name.charAt(0)), () -> "the name should start with an uppercase!");
         this.name = name;
-        this.dateOfBirth = dateOfBirth;
+        this.ageInMonths = ageInMonths;
     }
 
     public String getName() {
@@ -62,6 +60,6 @@ public class Cat {
     }
 
     public int getAgeInMonths() {
-        return Period.between(dateOfBirth, LocalDate.now()).getMonths();
+        return ageInMonths;
     }
 }
