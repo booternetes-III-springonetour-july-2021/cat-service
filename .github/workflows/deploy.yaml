@@ -1,6 +1,5 @@
 name: Deploy
 
-
 env:
   ACTIONS_ALLOW_UNSECURE_COMMANDS: true
   ARTIFACTORY_USERNAME: ${{ secrets.ARTIFACTORY_USERNAME  }}
