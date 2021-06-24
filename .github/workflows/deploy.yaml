@@ -32,6 +32,11 @@ jobs:
         with:
           java-version: 11
 
+      - name: Setup git Config
+        run: |
+          git config user.name "Booternetes CI Bot"
+          git config user.email "<>"
+
       - name: Deploy
         run: |
           cd $GITHUB_WORKSPACE
