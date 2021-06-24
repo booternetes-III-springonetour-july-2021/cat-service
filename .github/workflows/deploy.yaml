@@ -32,10 +32,6 @@ jobs:
         with:
           java-version: 11
 
-      - name: Setup git Config
-        run: |
-
-
       - name: Deploy
         run: |
           cd $GITHUB_WORKSPACE
