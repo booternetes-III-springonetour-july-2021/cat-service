@@ -3,7 +3,7 @@ set -e
 set -o pipefail
 echo $GIT_USERNAME
 
-echo "Hello!"
+echo "Hello!!! "
 
 START=$(cd `dirname $0`/../.. && pwd )
 echo starting at $START
