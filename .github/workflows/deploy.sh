@@ -15,6 +15,10 @@ BACKUP_GIT_CONFIG=$HOME/Desktop/backup_git_config/
 rm -rf $RC && mkdir -p $RC || echo "couldn't create the clone directory"
 git clone $RCURL $RC
 cd $RC
+echo "hello" > $RC/test
+cd $RC
+git add test
+exit 0
 rm -rf $BACKUP_GIT_CONFIG || echo "couldn't delete backup .git config directory.."
 mkdir -p  $BACKUP_GIT_CONFIG &&  rm -rf $BACKUP_GIT_CONFIG
 ls -la $RC/.git
