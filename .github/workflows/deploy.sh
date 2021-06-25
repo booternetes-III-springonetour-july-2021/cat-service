@@ -11,6 +11,7 @@ rm -rf $RC && mkdir -p $RC || echo "couldn't create the clone directory"
 git clone $RCURL $RC
 cd $RC
 git rm -rf .
+git branch -a
 git pull $START  main
 
 #
