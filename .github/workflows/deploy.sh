@@ -12,7 +12,7 @@ RCURL=https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/booternetes-III-springo
 rm -rf $RC && mkdir -p $RC || echo "couldn't create the clone directory"
 git clone $RCURL $RC
 
-git push --force $RC main:release
+git push  $RC main:release --force
 #cd $RC
 #pwd
 #git rm -rf . && git reset   .
