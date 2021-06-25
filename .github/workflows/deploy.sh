@@ -11,13 +11,15 @@ RC=$HOME/Desktop/release_clone
 RCURL=https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/booternetes-III-springonetour-july-2021/cat-service-release.git
 rm -rf $RC && mkdir -p $RC || echo "couldn't create the clone directory"
 git clone $RCURL $RC
-cd $RC
-pwd
-git rm -rf . && git reset   .
-git commit -am goodbye
-#git branch -a
-#git pull   --force $START  main
-git merge -s recursive -X theirs
+
+git push --force $RC main:release
+#cd $RC
+#pwd
+#git rm -rf . && git reset   .
+#git commit -am goodbye
+##git branch -a
+##git pull   --force $START  main
+##git merge -s recursive -X theirs
 
 ls -la $RC
 
