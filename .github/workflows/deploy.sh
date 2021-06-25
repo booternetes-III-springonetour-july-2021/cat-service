@@ -21,7 +21,9 @@ mv .git $BACKUP_GIT_CONFIG
 rm -rf $RC
 #cd $RC && git init
 #cd $RC
-cp -r $START $RC && cd $RC && rm -rf $RC/.git && git init  && mv $BACKUP_GIT_CONFIG .git && git add * && git commit -am "polish $RANDOM" && git checkout -b release && \
+cp -r $START $RC && cd $RC && rm -rf $RC/.git && git init  && mv $BACKUP_GIT_CONFIG .git && \
+  find . | while read l ; do git add $l ; done
+ && git commit -am "polish $RANDOM" && git checkout -b release && \
  git branch -a  &&
  git push $RCURL  release --force
 
