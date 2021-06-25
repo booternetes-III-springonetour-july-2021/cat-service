@@ -21,7 +21,7 @@ rm -rf $RC && mkdir -p $RC
 cd $RC && git init
 mv $BACKUP_GIT_CONFIG $RC/.git
 cd $RC &&  git config --global init.defaultBranch release && git branch -m release && git checkout -b work
-cd $START &&  git push  $RC main:release --force && git checkout release
+cd $START &&  git push  $RC main:release --force
 #
 #rm -rf $BACKUP_GIT_CONFIG || echo "couldn't delete backup .git config directory.."
 #mkdir -p  $BACKUP_GIT_CONFIG &&  rm -rf $BACKUP_GIT_CONFIG
