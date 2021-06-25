@@ -3,7 +3,7 @@ set -e
 set -o pipefail
 echo $GIT_USERNAME
 
-echo "Hello!!! "
+echo "Hello again!!! "
 
 START=$(cd `dirname $0`/../.. && pwd )
 echo starting at $START
@@ -16,7 +16,7 @@ cd $RC && git rm -rf . && git commit -am au\ revoir && git checkout -b work
 
 cd $START && git push  $RC main:release --force
 
-cd $RC && git checkout release &&  ls -la $RC
+cd $RC && git checkout release &&  ls -la $RC && cat $RC/.github/workflows/deploy.sh
 
 #
 #git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/booternetes-III-springonetour-july-2021/cat-service-release.git main:release --force
