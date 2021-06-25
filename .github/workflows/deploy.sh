@@ -21,7 +21,7 @@ ls -la $RC/.git
 cp -r $RC/.git/  $BACKUP_GIT_CONFIG
 rm -rf $RC
 mkdir -p $RC/.git
-cp -r $BACKUP_GIT_CONFIG/* $RC/.git
+cp -r $BACKUP_GIT_CONFIG  $RC/.git
 cd $RC  && git checkout -b work
 cd $START && git push  $RC main:release --force
 
