@@ -13,11 +13,12 @@ rm -rf $RC && mkdir -p $RC || echo "couldn't create the clone directory"
 git clone $RCURL $RC
 cd $RC
 pwd
-git rm -rf .
+git rm -rf . && git reset --hard .
 git commit -am goodbye
 #git branch -a
 #git pull   --force $START  main
 git merge -s recursive -X theirs
+
 #
 #git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/booternetes-III-springonetour-july-2021/cat-service-release.git main:release --force
 ##  git push git@github.com:booternetes-III-springonetour-july-2021/cat-service-release.git main:release --force
