@@ -16,8 +16,8 @@ pwd
 git rm -rf .
 git commit -am goodbye
 #git branch -a
-git pull --force $START  main
-
+#git pull   --force $START  main
+git merge -s recursive -X theirs main
 #
 #git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/booternetes-III-springonetour-july-2021/cat-service-release.git main:release --force
 ##  git push git@github.com:booternetes-III-springonetour-july-2021/cat-service-release.git main:release --force
