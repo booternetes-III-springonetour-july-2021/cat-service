@@ -19,7 +19,7 @@ function promote_code() {
   mv .git $BACKUP_GIT_CONFIG
   rm -rf $RC
   cp -r $START $RC && cd $RC && rm -rf $RC/.git && git init  && mv $BACKUP_GIT_CONFIG .git && \
-  find . | xargs -I e git add e    && git commit -am "polish $RANDOM" && git checkout -b release && \
+  rm -rf target && find . | xargs -I e git add e    && git commit -am "polish $RANDOM" && git checkout -b release && \
   git branch -a && git push $RCURL  release --force
 }
 
