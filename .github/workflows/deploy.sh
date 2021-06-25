@@ -13,7 +13,19 @@ RC=$HOME/Desktop/release_clone
 RCURL=https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/booternetes-III-springonetour-july-2021/cat-service-release.git
 rm -rf $RC && mkdir -p $RC || echo "couldn't create the clone directory"
 git clone $RCURL $RC
-cd $RC && git rm -rf . && git commit -am au\ revoir && git checkout -b work
+cd $RC && \
+  git rm -rf . && \
+  cp .git/config conf.bak && \
+  rm -rf .git && \
+  git init && \
+  mv conf.bak .git/config   && \
+  git commit -am ciao &&  \
+  git branch -m release && git checkout  release
+
 cd $START && git push  $RC main:release --force
-cd $RC && git checkout release &&  git push origin release:release --force
-echo "Pushed the code to the release repository."
+cd $RC &&  git push --set-upstream origin release && git push origin release
+
+#cd $RC && git rm -rf . && git commit -am au\ revoir && git checkout -b work
+#cd $START && git push  $RC main:release --force
+#cd $RC && git checkout release &&  git push origin release:release --force
+#echo "Pushed the code to the release repository."
