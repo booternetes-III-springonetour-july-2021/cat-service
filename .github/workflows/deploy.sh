@@ -11,7 +11,8 @@ RC=$HOME/Desktop/release_clone
 RCURL=https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/booternetes-III-springonetour-july-2021/cat-service-release.git
 rm -rf $RC && mkdir -p $RC || echo "couldn't create the clone directory"
 git clone $RCURL $RC
-
+cd $RC && git rm -rf . && git commit -am au\ revoir
+cd $START
 git push  $RC main:release --force
 #cd $RC
 #pwd
