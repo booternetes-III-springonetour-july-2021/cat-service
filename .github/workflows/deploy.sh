@@ -17,11 +17,15 @@ git clone $RCURL $RC
 cd $RC
 #git commit -am 'up ' # && git push --force ## this works!
 mv .git $BACKUP_GIT_CONFIG
-rm -rf $RC && mkdir -p $RC
-cd $RC && git init
-mv $BACKUP_GIT_CONFIG $RC/.git
-cd $RC &&  git config --global init.defaultBranch release && git branch -m release && echo "in $RC with branch release "
-cd $START && rm -rf .git && cp -r  $START/* $RC/ && ls -la  $RC  ##&& cd $RC && git add * && git commit -am sync && \
+#rm -rf $RC && mkdir -p $RC
+rm -rf $RC
+#cd $RC && git init
+#cd $RC
+cp -r $START $RC && cd $RC && rm -rf $RC/.git && git init  && mv $BACKUP_GIT_CONFIG .git && git add * && git commit -am "polish $RANDOM" && git checkout -b release && git push origin release
+
+#mv $BACKUP_GIT_CONFIG $RC/.git
+#cd $RC &&  git config --global init.defaultBranch release && git branch -m release && echo "in $RC with branch release "
+#cd $START && rm -rf .git && cp -r  $START/* $RC/ && ls -la  $RC  ##&& cd $RC && git add * && git commit -am sync && \
   # git remote add rc   https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/booternetes-III-springonetour-july-2021/cat-service-release.git && git push rc release
 
 #rm -rf $BACKUP_GIT_CONFIG || echo "couldn't delete backup .git config directory.."
