@@ -11,17 +11,21 @@ START=$(cd `dirname $0`/../.. && pwd )
 echo starting at $START
 RC=$HOME/Desktop/release_clone
 RCURL=https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/booternetes-III-springonetour-july-2021/cat-service-release.git
+BACKUP_GIT_CONFIG=$HOME/Desktop/backup_git_config
 rm -rf $RC && mkdir -p $RC || echo "couldn't create the clone directory"
 git clone $RCURL $RC
-
-## lets nuke everything and just copy and paste everything except the .git directory
 cd $RC
-BACKUP_GIT_CONFIG=$HOME/Desktop/backup_git_config
-rm -rf $BACKUP_GIT_CONFIG
+rm -rf $BACKUP_GIT_CONFIG || echo "couldn't delete backup .git config directory.."
 mkdir -p  $BACKUP_GIT_CONFIG
-mv .git $BACKUP_GIT_CONFIG
-rm -rf ./*
-mv $BACKUP_GIT_CONFIG .git
+ls -la $RC/.git
+cp -r $RC/.git/  $BACKUP_GIT_CONFIG
+rm -rf $RC
+mkdir -p $RC/.git
+cp -r $BACKUP_GIT_CONFIG/* $RC/.git
+cd $RC  && git checkout -b work
+cd $START && git push  $RC main:release --force
+
+#mv $BACKUP_GIT_CONFIG .git
 
 #  git rm -rf . && \
 #  cp .git/config conf.bak && \
@@ -30,9 +34,9 @@ mv $BACKUP_GIT_CONFIG .git
 #  mv conf.bak .git/config   && \
 #  git commit -am ciao &&  \
 #  git branch -m release && git checkout release
-
-cd $START && git push  $RC main:release --force
-cd $RC &&  git push --set-upstream origin release && git push origin release
+#
+#cd $START && git push  $RC main:release --force
+#cd $RC &&  git push --set-upstream origin release && git push origin release
 
 #cd $RC && git rm -rf . && git commit -am au\ revoir && git checkout -b work
 #cd $START && git push  $RC main:release --force
