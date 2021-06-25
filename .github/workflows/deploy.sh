@@ -11,7 +11,7 @@ START=$(cd `dirname $0`/../.. && pwd )
 echo starting at $START
 RC=$HOME/Desktop/release_clone
 RCURL=https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/booternetes-III-springonetour-july-2021/cat-service-release.git
-BACKUP_GIT_CONFIG=$HOME/Desktop/backup_git_config
+BACKUP_GIT_CONFIG=$HOME/Desktop/backup_git_config/
 rm -rf $RC && mkdir -p $RC || echo "couldn't create the clone directory"
 git clone $RCURL $RC
 cd $RC
