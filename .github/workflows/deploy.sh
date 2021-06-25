@@ -4,7 +4,8 @@ set -o pipefail
 echo $GIT_USERNAME
 
 
-START=$(cd `dirname $0` && pwd )/../..
+START=$(cd `dirname $0`/../.. && pwd )
+echo starting at $START
 RC=$HOME/Desktop/release_clone
 RCURL=https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/booternetes-III-springonetour-july-2021/cat-service-release.git
 rm -rf $RC && mkdir -p $RC || echo "couldn't create the clone directory"
@@ -13,7 +14,7 @@ cd $RC
 pwd  && exit  0
 git rm -rf .
 git commit -am goodbye
-git branch -a
+#git branch -a
 git pull $START  main
 
 #
