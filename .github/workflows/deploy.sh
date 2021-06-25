@@ -20,9 +20,9 @@ mv .git $BACKUP_GIT_CONFIG
 rm -rf $RC && mkdir -p $RC
 cd $RC && git init
 mv $BACKUP_GIT_CONFIG $RC/.git
-cd $RC &&  git config --global init.defaultBranch release && git branch -m release #&& git checkout -b work
-cd $START && rm -rf .git && cp -r  $START/* $RC/ && cd $RC && git add * && git commit -am sync && \
-   git remote add rc   https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/booternetes-III-springonetour-july-2021/cat-service-release.git && git push rc release
+cd $RC &&  git config --global init.defaultBranch release && git branch -m release && echo "in $RC with branch release "
+cd $START && rm -rf .git && cp -r  $START/* $RC/ && ls -la  $RC  ##&& cd $RC && git add * && git commit -am sync && \
+  # git remote add rc   https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/booternetes-III-springonetour-july-2021/cat-service-release.git && git push rc release
 
 #rm -rf $BACKUP_GIT_CONFIG || echo "couldn't delete backup .git config directory.."
 #mkdir -p  $BACKUP_GIT_CONFIG &&  rm -rf $BACKUP_GIT_CONFIG
