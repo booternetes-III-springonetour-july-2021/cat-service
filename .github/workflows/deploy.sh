@@ -1,7 +1,12 @@
 #!/usr/bin/env bash
 set -e
 set -o pipefail
-echo $GIT_USERNAME
+
+echo "Running as $GIT_USERNAME"
+
+git config --global user.email "<>"
+git config --global user.name "Booternetes CI Bot"
+
 START=$(cd `dirname $0`/../.. && pwd )
 echo starting at $START
 RC=$HOME/Desktop/release_clone
@@ -11,3 +16,4 @@ git clone $RCURL $RC
 cd $RC && git rm -rf . && git commit -am au\ revoir && git checkout -b work
 cd $START && git push  $RC main:release --force
 cd $RC && git checkout release &&  git push origin release --force
+echo "Pushed the code to the release repository."
