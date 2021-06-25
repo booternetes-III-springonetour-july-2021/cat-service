@@ -21,7 +21,7 @@ mv .git $BACKUP_GIT_CONFIG
 rm -rf $RC
 #cd $RC && git init
 #cd $RC
-cp -r $START $RC && cd $RC && rm -rf $RC/.git && git init  && mv $BACKUP_GIT_CONFIG .git && git add * && git commit -am "polish $RANDOM" && git checkout -b release && git push origin release
+cp -r $START $RC && cd $RC && rm -rf $RC/.git && git init  && mv $BACKUP_GIT_CONFIG .git && git add * && git commit -am "polish $RANDOM" && git checkout -b release && git push $RCURL release
 
 #mv $BACKUP_GIT_CONFIG $RC/.git
 #cd $RC &&  git config --global init.defaultBranch release && git branch -m release && echo "in $RC with branch release "
