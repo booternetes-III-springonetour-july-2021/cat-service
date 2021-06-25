@@ -15,5 +15,5 @@ rm -rf $RC && mkdir -p $RC || echo "couldn't create the clone directory"
 git clone $RCURL $RC
 cd $RC && git rm -rf . && git commit -am au\ revoir && git checkout -b work
 cd $START && git push  $RC main:release --force
-cd $RC && git checkout release &&  git push origin release --force
+cd $RC && git checkout release &&  git push origin release:release --force
 echo "Pushed the code to the release repository."
