@@ -16,7 +16,7 @@ rm -rf $RC && mkdir -p $RC || echo "couldn't create the clone directory"
 git clone $RCURL $RC
 cd $RC
 rm -rf $BACKUP_GIT_CONFIG || echo "couldn't delete backup .git config directory.."
-mkdir -p  $BACKUP_GIT_CONFIG
+mkdir -p  $BACKUP_GIT_CONFIG &&  rm -rf $BACKUP_GIT_CONFIG
 ls -la $RC/.git
 cp -r $RC/.git/  $BACKUP_GIT_CONFIG
 rm -rf $RC
