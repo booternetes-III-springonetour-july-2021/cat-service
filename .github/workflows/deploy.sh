@@ -13,7 +13,7 @@ rm -rf $RC && mkdir -p $RC || echo "couldn't create the clone directory"
 git clone $RCURL $RC
 cd $RC
 pwd
-git rm -rf . && git reset --hard .
+git rm -rf . && git reset   .
 git commit -am goodbye
 #git branch -a
 #git pull   --force $START  main
