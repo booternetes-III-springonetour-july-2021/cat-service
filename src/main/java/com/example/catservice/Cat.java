@@ -12,6 +12,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.time.LocalDate;
+import java.time.Period;
 
 import org.springframework.util.Assert;
 
@@ -28,23 +30,23 @@ public class Cat {
 
     private String name;
 
-    private Integer ageInMonths;
+    private LocalDate dateOfBirth;
 
     private Cat() {
     }
 
     public Cat(String name) {
-         Assert.isTrue(Character.isUpperCase(name.charAt(0)), () -> "the name should start with an uppercase!");
-         this.name = name;
+        this(name, LocalDate.now().minusMonths(4));
     }
 
-    public Cat(String name, int ageInMonths) {
-        this(name);
-        this.ageInMonths = ageInMonths;
+    public Cat(String name, LocalDate dateOfBirth) {
+        Assert.isTrue(Character.isUpperCase(name.charAt(0)), () -> "the name should start with an uppercase!");
+        this.name = name;
+        this.dateOfBirth = dateOfBirth;
     }
 
     public Integer getAgeInMonths() {
-        return ageInMonths;
+        return Period.between(dateOfBirth, LocalDate.now()).getMonths();
     }
 
     public String getName() {

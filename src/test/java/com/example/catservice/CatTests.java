@@ -8,6 +8,8 @@
 
 package com.example.catservice;
 
+import java.time.LocalDate;
+
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -35,8 +37,13 @@ class CatTests {
 		assertThat(cat.getName()).isEqualTo("Toby");
 	}
 	@Test
-	void getNameShouldReturnAgeInMonths() {
-		Cat cat = new Cat("Toby", 7);
+	void getAgeInMonths() {
+		Cat cat = new Cat("Toby", LocalDate.now().minusMonths(7));
 		assertThat(cat.getAgeInMonths()).isEqualTo(7);
+	}
+	@Test
+	void getAgeInMonthsShouldDefaultTo4() {
+		Cat cat = new Cat("Toby");
+		assertThat(cat.getAgeInMonths()).isEqualTo(4);
 	}
 }
