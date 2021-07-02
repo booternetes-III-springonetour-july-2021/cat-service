@@ -1,6 +1,6 @@
 
 
-package com.example.demo;
+package com.example.catservice;
 
 import org.hibernate.dialect.PostgreSQL9Dialect;
 import org.junit.jupiter.api.Test;

@@ -6,28 +6,15 @@
  * Vestibulum commodo. Ut rhoncus gravida arcu.
  */
 
-package com.example.demo;
+package com.example.catservice;
 
-import org.springframework.stereotype.Service;
-
-import javax.transaction.Transactional;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  * @author Madhura Bhave
  */
-@Service
-@Transactional
-class CatsService {
+interface CatsRepository extends JpaRepository<Cat, Integer> {
 
-	private final CatsRepository repository;
+	Cat findByName(String name);
 
-	CatsService(CatsRepository repository) {
-
-		this.repository = repository;
-//		this.repository.save ( new Cat ("Toby"));
-	}
-
-	public Cat getCat(String name) {
-		return this.repository.findByName(name);
-	}
 }

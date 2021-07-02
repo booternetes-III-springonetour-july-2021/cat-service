@@ -6,7 +6,7 @@
 	* Vestibulum commodo. Ut rhoncus gravida arcu.
 	*/
 
-package com.example.demo;
+package com.example.catservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
