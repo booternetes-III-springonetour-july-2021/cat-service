@@ -28,12 +28,23 @@ public class Cat {
 
     private String name;
 
+    private Integer ageInMonths;
+
     private Cat() {
     }
 
     public Cat(String name) {
          Assert.isTrue(Character.isUpperCase(name.charAt(0)), () -> "the name should start with an uppercase!");
          this.name = name;
+    }
+
+    public Cat(String name, int ageInMonths) {
+        this(name);
+        this.ageInMonths = ageInMonths;
+    }
+
+    public Integer getAgeInMonths() {
+        return ageInMonths;
     }
 
     public String getName() {
