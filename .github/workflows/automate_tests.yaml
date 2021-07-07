@@ -1,4 +1,4 @@
-name: Deploy
+name: Automate_tests
 
 env:
   ACTIONS_ALLOW_UNSECURE_COMMANDS: true
@@ -32,7 +32,7 @@ jobs:
         with:
           java-version: 11
 
-      - name: Deploy
+      - name: Automate_tests
         run: |
           cd $GITHUB_WORKSPACE
-          .github/workflows/deploy.sh
+          .github/workflows/automate_tests.sh
