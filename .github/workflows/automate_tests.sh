@@ -1,41 +1,26 @@
-name: Automate_tests
+#!/usr/bin/env bash
+set -e
+set -o pipefail
 
-env:
-  ARTIFACTORY_USERNAME: ${{ secrets.ARTIFACTORY_USERNAME  }}
-  ARTIFACTORY_PASSWORD: ${{ secrets.ARTIFACTORY_PASSWORD  }}
-  GIT_USERNAME: ${{ secrets.GIT_USERNAME  }}
-  GIT_PASSWORD: ${{ secrets.GIT_PASSWORD  }}
+echo "Running as $GIT_USERNAME"
 
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
-  repository_dispatch:
-    types: cat-meow
+git config --global user.email "<>"
+git config --global user.name "Booternetes CI Bot"
 
-  curl -H “Authorization: token ${GH_PAT}” —request POST —data ‘{“event_type”: “cat-meow”}’ https://api.github.com/repos/booternetes-III-springonetour-july-2021/cat-service/dispatches
+START=$(cd `dirname $0`/../.. && pwd )
+RC=$HOME/Desktop/release_clone
+RCURL=https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/booternetes-III-springonetour-july-2021/cat-service-release.git
+BACKUP_GIT_CONFIG=$HOME/Desktop/backup_git_config/
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
+function promote_code() {
+  rm -rf $RC && mkdir -p $RC || echo "couldn't create the clone directory"
+  git clone $RCURL $RC
+  cd $RC
+  mv .git $BACKUP_GIT_CONFIG
+  rm -rf $RC
+  cp -r $START $RC && cd $RC && rm -rf $RC/.git && git init  && mv $BACKUP_GIT_CONFIG .git && \
+  rm -rf target && find . | xargs -I e git add e    && git commit -am "polish $RANDOM" && git checkout -b release && \
+  git branch -a && git push $RCURL  release --force
+}
 
-      - uses: actions/checkout@v2
-
-      - uses: actions/cache@v1
-        with:
-          path: ~/.m2/repository
-          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-          restore-keys: |
-            ${{ runner.os }}-maven-
-
-      - name: Set up JDK 11
-        uses: actions/setup-java@v1
-        with:
-          java-version: 11
-
-      - name: Automate_tests
-        run: |
-          cd $GITHUB_WORKSPACE
-          .github/workflows/automate_tests.sh
+mvn clean deploy && promote_code || echo "couldn't build and promote the code!"
