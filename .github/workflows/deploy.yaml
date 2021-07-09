@@ -9,6 +9,8 @@ env:
 on:
   push:
     branches: [ main ]
+  repository_dispatch:
+    types: cat-meow
 
 jobs:
   build:
