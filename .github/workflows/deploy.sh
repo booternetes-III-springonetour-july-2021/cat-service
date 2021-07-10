@@ -16,7 +16,6 @@ function promote_code() {
   rm -rf $RC && mkdir -p $RC || echo "couldn't create the clone directory"
   git clone $RCURL $RC
   cd $RC
-  git checkout ${GITHUB_REF}
   mv .git $BACKUP_GIT_CONFIG
   rm -rf $RC
   cp -r $START $RC && cd $RC && rm -rf $RC/.git && git init  && mv $BACKUP_GIT_CONFIG .git && \
