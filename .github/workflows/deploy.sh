@@ -9,7 +9,7 @@ git config --global user.name "Booternetes CI Bot"
 
 START=$(cd `dirname $0`/../.. && pwd )
 RC=$HOME/Desktop/release_clone
-RCURL=https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GITHUB_REPOSITORY}.git
+RCURL=https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GITHUB_REPOSITORY}-release.git
 BACKUP_GIT_CONFIG=$HOME/Desktop/backup_git_config/
 
 function promote_code() {
