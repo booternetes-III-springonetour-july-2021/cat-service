@@ -9,13 +9,14 @@ git config --global user.name "Booternetes CI Bot"
 
 START=$(cd `dirname $0`/../.. && pwd )
 RC=$HOME/Desktop/release_clone
-RCURL=https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/booternetes-III-springonetour-july-2021/cat-service-release.git
+RCURL=https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GITHUB_REPOSITORY}.git
 BACKUP_GIT_CONFIG=$HOME/Desktop/backup_git_config/
 
 function promote_code() {
   rm -rf $RC && mkdir -p $RC || echo "couldn't create the clone directory"
   git clone $RCURL $RC
   cd $RC
+  git checkout ${GITHUB_REF}
   mv .git $BACKUP_GIT_CONFIG
   rm -rf $RC
   cp -r $START $RC && cd $RC && rm -rf $RC/.git && git init  && mv $BACKUP_GIT_CONFIG .git && \
@@ -23,4 +24,4 @@ function promote_code() {
   git branch -a && git push $RCURL  release --force
 }
 
-mvn clean deploy && promote_code || echo "couldn't build and promote the code!"
+mvn clean verify && promote_code || echo "couldn't build and promote the code!"
