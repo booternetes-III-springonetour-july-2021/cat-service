@@ -1,0 +1,27 @@
+name: Update Tag
+
+env:
+  GIT_USERNAME: ${{ secrets.GIT_USERNAME  }}
+  GIT_PASSWORD: ${{ secrets.GIT_PASSWORD  }}
+  REGISTRY_HOST: ${{ secrets.REGISTRY_HOST  }}
+  REGISTRY_USERNAME: ${{ secrets.REGISTRY_USERNAME  }}
+  REGISTRY_PASSWORD: ${{ secrets.REGISTRY_PASSWORD  }}
+
+on:
+  repository_dispatch:
+    types: [tag]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Update Tag
+        uses: nick-invision/retry@v2
+        with:
+          timeout_seconds: 30
+          max_attempts: 10
+          retry_wait_seconds: 60
+          retry_on: error
+          command: cd $GITHUB_WORKSPACE && .github/workflows/update-tag.sh
