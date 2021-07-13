@@ -22,12 +22,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 @ActiveProfiles("test")
 public class CatsRepositoryTests {
 
-	private final CatsRepository repository;
-
 	@Autowired
-	public CatsRepositoryTests(CatsRepository repository) {
-		this.repository = repository;
-	}
+	private CatsRepository repository;
 
 	@Test
 	void findByNameShouldReturnName() {

@@ -22,9 +22,7 @@ class CatsService {
 	private final CatsRepository repository;
 
 	CatsService(CatsRepository repository) {
-
 		this.repository = repository;
-//		this.repository.save ( new Cat ("Toby"));
 	}
 
 	public Cat getCat(String name) {

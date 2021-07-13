@@ -23,12 +23,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 @ActiveProfiles("test")
 public class CatsEntityTests {
 
-	private final TestEntityManager entityManager;
-
 	@Autowired
-	CatsEntityTests(TestEntityManager tem) {
-		this.entityManager = tem;
-	}
+	private TestEntityManager entityManager;
 
 	@Test
 	void catCanBePersisted() {

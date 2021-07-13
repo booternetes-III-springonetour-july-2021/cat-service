@@ -48,8 +48,6 @@ public class CatsControllerTests {
 				MockMvcRequestBuilders.get("/cats/{name}", "Toby"))
 				.andExpect(status().isOk())
 				.andExpect(content().string(json));
-//				.andExpect(MockMvcResultMatchers.jsonPath( "@.name" ).value("Toby") ) ;
 		verify(this.catsService, atLeastOnce()).getCat("Toby");
 	}
-
 }
