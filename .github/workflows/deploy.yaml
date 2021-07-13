@@ -35,3 +35,12 @@ jobs:
         run: |
           cd $GITHUB_WORKSPACE
           .github/workflows/deploy.sh
+
+      # # Uncomment the following to enable updating kustomize tag
+      # - name: Update Tag
+      #   run: |
+      #     curl -X POST \
+      #     -H "Accept: application/vnd.github.v3+json" \
+      #     -H "Authorization: token ${{ secrets.GIT_PASSWORD  }}" \
+      #     --data '{"event_type": "tag", "client_payload": { "version": "1.2.3"}}' \
+      #     https://api.github.com/repos/${{ secrets.GIT_USERNAME  }}/cat-service/dispatches
