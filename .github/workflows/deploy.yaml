@@ -1,14 +1,12 @@
 name: Deploy
 
 env:
-  ARTIFACTORY_USERNAME: ${{ secrets.ARTIFACTORY_USERNAME  }}
-  ARTIFACTORY_PASSWORD: ${{ secrets.ARTIFACTORY_PASSWORD  }}
   GIT_USERNAME: ${{ secrets.GIT_USERNAME  }}
   GIT_PASSWORD: ${{ secrets.GIT_PASSWORD  }}
 
 on:
   push:
-    branches: [ main ]
+    branches: [ educates-workshop ]
   repository_dispatch:
     types: cat-meow
 
