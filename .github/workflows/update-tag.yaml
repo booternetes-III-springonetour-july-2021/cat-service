@@ -17,11 +17,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Update Tag
-        uses: nick-invision/retry@v2
-        with:
-          timeout_seconds: 30
-          max_attempts: 10
-          retry_wait_seconds: 60
-          retry_on: error
-          command: cd $GITHUB_WORKSPACE && .github/workflows/update-tag.sh
+      - name: Deploy
+        run: |
+          cd $GITHUB_WORKSPACE
+          .github/workflows/update-tag.sh
